@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { View, StyleSheet, TextInput, Button } from "react-native";
+import { View, StyleSheet, TextInput, Button, Alert } from "react-native";
 
 export const AddTodo = ({ onSubmit }) => {
   const [inputValue, setInputValue] = useState("");
 
   const pressHandler = () => {
-    if (inputValue) {
+    if (inputValue.trim()) {
       onSubmit(inputValue);
       setInputValue("");
+    } else {
+      Alert.alert("Need to enter text");
     }
   };
 

@@ -1,22 +1,27 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, SafeAreaView } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity  } from "react-native";
 
-export default function Todo({ todo }) {
+export default function Todo({ todo, onRemove }) {
   return (
-    <View style={styles.todo}>
-      <Text style={styles.text}>{todo.title}</Text>
-    </View>
+    <TouchableOpacity
+      activeOpacity={0.2}
+      onLongPress={() => onRemove(todo.id)}
+    >
+      <View style={styles.todo}>
+        <Text style={styles.text}>{todo.title}</Text>
+      </View>
+    </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
   todo: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      padding: 15,
-      borderWidth: 1,
-      borderColor: '#eee',
-      borderRadius: 5,
-      marginBottom: 10
+    flexDirection: "row",
+    alignItems: "center",
+    padding: 15,
+    borderWidth: 1,
+    borderColor: "#eee",
+    borderRadius: 5,
+    marginBottom: 10,
   },
 });
