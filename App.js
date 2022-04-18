@@ -1,12 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
-import Navbar from './src/components/Navbar/Navbar';
+import { StatusBar } from "expo-status-bar";
+import { useState } from "react";
+import { StyleSheet, Text, View, SafeAreaView } from "react-native";
+import { AddTodo } from "./src/components/AddTodo/AddTodo";
+import Navbar from "./src/components/Navbar/Navbar";
+import Todo from "./src/components/Todo/Todo";
 
 export default function App() {
-  
+  const [todos, setTodos] = useState([]);
+
+  const addTodo = (title) => {
+    setTodos((prev) => [
+      {
+        id: Date.now().toString(),
+        title,
+      },
+      ...prev,
+    ]);
+  };
+
   return (
-    <SafeAreaView style={styles.container}>
-      <Navbar title="Todo App"/>
+    <SafeAreaView>
+      <Navbar title="Todo App" />
+      <View style={styles.container}>
+        <AddTodo onSubmit={addTodo} />
+        <View>
+          {todos.map((todo) => <Todo key={todo.id} todo={todo}/>)}
+        </View>
+      </View>
       <StatusBar style="auto" />
     </SafeAreaView>
   );
@@ -14,6 +34,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
+    paddingHorizontal: 20,
+    paddingVertical: 20,
   },
-  
 });
