@@ -1,5 +1,5 @@
 import React from "react";
-import Main from "./Main";
+import MainPage from "./MainPage";
 import FullInfo from "./FullInfo";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
@@ -11,13 +11,13 @@ export default function Navigate() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="Main"
-          component={Main}
+          name="MainPage"
+          component={MainPage}
           options={{
-            title: "Home",
+            title: "Exchange rates",
             headerStyle: {
               backgroundColor: "#e55544",
-              height: 70,
+              height: 50,
             },
             headerTitleStyle: {
               fontWeight: "400",
