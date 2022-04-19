@@ -1,13 +1,32 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 import { gStyle } from "../styles/style";
 
-export default function Contact({ route }) {
+export default function FullInfo({ route }) {
   return (
     <View style={gStyle.main}>
       <Text style={gStyle.title}>{route.params.name}</Text>
-      <Text>{route.params.anons}</Text>
-      <Text>{route.params.full}</Text>
+      <Image
+        source={{
+          uri: route.params.img,
+        }}
+        style={styles.img}
+      />
+      <Text style={styles.full}>{route.params.full}</Text>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  full: {
+    fontFamily: "mt-light",
+    fontSize: 16,
+    marginTop: 20,
+    textAlign: "center",
+    color: "#f55151",
+  },
+  img: {
+    width: "100%",
+    height: 220,
+  },
+});
