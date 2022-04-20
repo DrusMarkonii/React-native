@@ -24,10 +24,6 @@ export const mainRate = {
       code: "UAH",
       value: 29.68627,
     },
-    USD: {
-      code: "USD",
-      value: 1,
-    },
     BYN: {
       code: "BYN",
       value: 3.34582,

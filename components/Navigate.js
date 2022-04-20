@@ -14,13 +14,15 @@ export default function Navigate() {
           name="MainPage"
           component={MainPage}
           options={{
-            title: "Exchange rates",
+            title: "Main",
             headerStyle: {
-              backgroundColor: "#e55544",
+              backgroundColor: "#1C4492",
               height: 50,
+              
             },
             headerTitleStyle: {
               fontWeight: "400",
+              color: '#FFF'
             },
           }}
         />

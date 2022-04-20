@@ -5,12 +5,15 @@ export const gStyle = StyleSheet.create({
     flex: 1,
     padding: 20,
     paddingTop: 40,
+    backgroundColor: "#2D3952",
+    alignItems: 'center'
   },
   title: {
     fontSize: 25,
     color: "#333",
     textAlign: "center",
     fontFamily: "mt-bold",
-    marginBottom: 20
+    marginBottom: 20,
+    color: "white",
   },
 });
