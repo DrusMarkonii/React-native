@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { mainRate } from "./store";
 import {
@@ -16,7 +16,8 @@ import Form from "./Form";
 import Rate from "./Rate";
 import InputValue from "./InputValue";
 
-export default function MainPage({ navigation }) {
+
+export default function MainPage() {
   const [selectedValue, setSelectedValue] = useState([]);
   const [date, setDate] = useState();
   const [mainCurrency, setMainCurrency] = useState()
@@ -27,14 +28,11 @@ export default function MainPage({ navigation }) {
   const [amountInFromCurrency, setAmountInFromCurrency] = useState(true);
   const [exchangeRate, setExChangeRate] = useState();
 
- 
-  const data = mainRate.data;
-  // console.log(data);
 
   const BASE_URL =
     "http://api.exchangeratesapi.io/v1/latest?access_key=cb6a10a60f1d6fd60feba128380a4b5e";
 
-  useEffect(() => {
+    useMemo(() => {
     fetch(`${BASE_URL}&base=EUR&symbols=USD,BYN,RUB,GEL`)
       .then((response) => response.json())
       .then((data) => {
@@ -66,7 +64,6 @@ export default function MainPage({ navigation }) {
   let fromAmount, toAmount;
 
   if (amountInFromCurrency) {
-    console.log(amountInFromCurrency, exchangeRate);
     fromAmount = Number(amount);
     toAmount = (+amount * exchangeRate).toFixed(3);
   } else {
@@ -76,7 +73,6 @@ export default function MainPage({ navigation }) {
 
   const handleFromAmountChange = (text) => {
     setAmount(text);
-    console.log(text);
     setAmountInFromCurrency(true);
   };
 
