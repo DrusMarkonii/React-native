@@ -12,9 +12,14 @@ const fonts = () =>
 
 export default function App() {
   const [font, setFont] = useState(false);
+  const [context, setContext] = useState(null);
 
   if (font) {
-    return <MainStack />;
+    return (
+      
+        <MainStack />
+      
+    );
     // return <MainPage />;
   } else {
     return (

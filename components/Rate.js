@@ -2,18 +2,24 @@ import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { gStyle } from "../styles/style";
 
-export default function Rate({ data }) {
-  return (
-    <View style={styles.currenciesBox}>
-      {Object.entries(data).map((item) => {
-        return (
-          <Text key={item[0]} style={styles.currenciesItem}>
-            {item[1].code}: {item[1].value}
-          </Text>
-        );
-      })}
-    </View>
-  );
+export default function Rate({ rates, mainCurrency }) {
+  if (rates !== null) {
+    // console.log(Object.entries(rates))
+    return (
+      <View style={styles.currenciesBox}>
+      <Text style={styles.currenciesItem}>1 {mainCurrency}:</Text>
+        {Object.entries(rates).map((item) => {
+          return (
+            <Text key={item} style={styles.currenciesItem}>
+              {`${item[0]}: ${item[1]}`}
+            </Text>
+          );
+        })}
+      </View>
+    );
+  } else {
+    return <Text>Loading..</Text>
+  }
 }
 
 const styles = StyleSheet.create({

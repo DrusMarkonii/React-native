@@ -3,11 +3,20 @@ import { View, Text, StyleSheet, Image, Picker } from "react-native";
 import { TextInput } from "react-native-web";
 import { gStyle } from "../styles/style";
 
-export default function InputValue({ currencyOption, amount,onChangeAmount, selectedCurrency, onChangeCurrency }) {
-
+export default function InputValue({
+  currencyOption,
+  selectedCurrency,
+  onChangeCurrency,
+  onChangeAmount,
+  amount
+}) {
   return (
     <View style={styles.inputBox}>
-      <TextInput style={styles.input} value={amount} onChange={onChangeAmount} />
+      <TextInput
+        style={styles.input}
+        value={amount}
+        onChangeText={onChangeAmount}
+      />
       <Picker
         selectedValue={selectedCurrency}
         style={styles.select}
